@@ -1,12 +1,12 @@
 # 💬 Next-Gen Real-Time Chat Application  
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-![GitHub stars](https://img.shields.io/github/stars/yourusername/realtime-chat-app?style=social)
-![GitHub last commit](https://img.shields.io/github/last-commit/yourusername/realtime-chat-app)
+![GitHub stars](https://img.shields.io/github/stars/TechnologicalJerry/real-time-chat-application?style=social)
+![GitHub last commit](https://img.shields.io/github/last-commit/TechnologicalJerry/real-time-chat-application)
 ![Node.js](https://img.shields.io/badge/Node.js-20+-339933?style=flat&logo=nodedotjs&logoColor=white)
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/yourusername/realtime-chat-app/main/docs/screenshot.png" alt="Chat App Interface" width="800"/>
+  <img src="https://raw.githubusercontent.com/TechnologicalJerry/real-time-chat-application/main/docs/screenshot.png" alt="Chat App Interface" width="800"/>
   <br/>
   <em>Modern real-time chat with end-to-end encryption and AI features</em>
 </div>
