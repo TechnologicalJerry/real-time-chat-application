@@ -6,7 +6,7 @@
 ![Node.js](https://img.shields.io/badge/Node.js-20+-339933?style=flat&logo=nodedotjs&logoColor=white)
 
 <div align="center">
-  <img src="https://i.imgur.com/JDyh8Wn.png" alt="Chat App Screenshot" width="700"/>
+  <img src="https://raw.githubusercontent.com/yourusername/realtime-chat-app/main/docs/screenshot.png" alt="Chat App Interface" width="800"/>
   <br/>
   <em>Modern real-time chat with end-to-end encryption and AI features</em>
 </div>
