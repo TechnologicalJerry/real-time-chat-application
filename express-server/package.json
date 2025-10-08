@@ -1,0 +1,41 @@
+{
+  "name": "real-time-chat-application",
+  "version": "1.0.0",
+  "description": " A real-time chat application with Express, TypeScript, and MongoDB",
+  "keywords": [
+    "chat",
+    "realtime",
+    "socket.io",
+    "express",
+    "typescript"
+  ],
+  "homepage": "https://github.com/TechnologicalJerry/real-time-chat-application#readme",
+  "bugs": {
+    "url": "https://github.com/TechnologicalJerry/real-time-chat-application/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TechnologicalJerry/real-time-chat-application.git"
+  },
+  "license": "MIT",
+  "author": "technojerry",
+  "type": "commonjs",
+  "main": "dist/server.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.16.0",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/socket.io": "^3.0.1"
+  }
+}
