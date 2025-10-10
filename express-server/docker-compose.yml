@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:7
+    container_name: chat-mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+      MONGO_INITDB_DATABASE: real-time-chat-application
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - chat-network
+
+  # Express API Server
+  api:
+    build: .
+    container_name: chat-api
+    restart: unless-stopped
+    ports:
+      - "5050:5050"
+    environment:
+      NODE_ENV: production
+      PORT: 5050
+      MONGO_URI: mongodb://admin:password123@mongodb:27017/real-time-chat-application?authSource=admin
+      JWT_SECRET: your-super-secret-jwt-key-change-this
+      CORS_ORIGIN: http://localhost:3000
+    depends_on:
+      - mongodb
+    networks:
+      - chat-network
+    command: npm start
+
+volumes:
+  mongodb_data:
+    driver: local
+
+networks:
+  chat-network:
+    driver: bridge
+
