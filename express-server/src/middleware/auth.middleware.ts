@@ -7,9 +7,12 @@ export const authMiddleware = (
     req: AuthRequest,
     res: Response,
     next: NextFunction
-) => {
+): void => {
     const auth = req.headers.authorization?.split(' ')[1];
-    if (!auth) return res.status(401).json({ message: 'No token' });
+    if (!auth) {
+        res.status(401).json({ message: 'No token' });
+        return;
+    }
 
     try {
         const decoded = verifyToken(auth);
