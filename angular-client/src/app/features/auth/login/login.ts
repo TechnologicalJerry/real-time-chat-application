@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Auth } from '../../../core/services/auth';
 
@@ -14,17 +14,22 @@ export class Login {
   private fb = inject(FormBuilder);
   private auth = inject(Auth);
   private router = inject(Router);
+  private route = inject(ActivatedRoute);
 
   loginForm: FormGroup;
   isLoading = false;
   errorMessage = '';
   showPassword = false;
+  returnUrl: string = '/dashboard';
 
   constructor() {
     this.loginForm = this.fb.group({
       identifier: ['', [Validators.required]], // Can be userName or email
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
+    
+    // Get return URL from route parameters or default to '/dashboard'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
   }
 
   togglePasswordVisibility(): void {
@@ -51,10 +56,11 @@ export class Login {
     this.auth.login(credentials).subscribe({
       next: (response) => {
         console.log('Login successful:', response);
-        // Store token (you might want to use localStorage or a state management solution)
+        // Store token and user data
         localStorage.setItem('token', response.token);
         localStorage.setItem('user', JSON.stringify(response.user));
-        this.router.navigate(['/dashboard']);
+        // Redirect to the return URL or dashboard
+        this.router.navigate([this.returnUrl]);
       },
       error: (error) => {
         this.isLoading = false;
