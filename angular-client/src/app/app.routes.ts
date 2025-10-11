@@ -10,6 +10,7 @@ import { Users } from './features/dashboard/components/users/users';
 import { Chat } from './features/dashboard/components/chat/chat';
 import { NotFound } from './shared/components/not-found/not-found';
 import { authGuard } from './core/guards/auth-guard';
+import { loginGuard } from './core/guards/login-guard';
 import { userResolver } from './core/resolvers/user-resolver';
 import { productResolver } from './core/resolvers/product-resolver';
 import { chatResolver } from './core/resolvers/chat-resolver';
@@ -17,8 +18,8 @@ import { chatResolver } from './core/resolvers/chat-resolver';
 export const routes: Routes = [
     { path: '', component: Home },
     { path: 'about', component: About },
-    { path: 'login', component: Login },
-    { path: 'signup', component: Signup },
+    { path: 'login', component: Login, canActivate: [loginGuard] },
+    { path: 'signup', component: Signup, canActivate: [loginGuard] },
 
     {
         path: 'dashboard',
