@@ -1,4 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -6,6 +7,7 @@ import { Auth } from '../../../core/services/auth';
 
 @Component({
   selector: 'app-login',
+  standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './login.html',
   styleUrl: './login.scss'
@@ -15,6 +17,7 @@ export class Login {
   private auth = inject(Auth);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
+  private platformId = inject(PLATFORM_ID);
 
   loginForm: FormGroup;
   isLoading = false;
@@ -46,19 +49,21 @@ export class Login {
     this.errorMessage = '';
 
     const { identifier, password } = this.loginForm.value;
-    
+
     // Determine if identifier is email or username
     const isEmail = identifier.includes('@');
-    const credentials = isEmail 
+    const credentials = isEmail
       ? { email: identifier, password }
       : { userName: identifier, password };
 
     this.auth.login(credentials).subscribe({
       next: (response) => {
         console.log('Login successful:', response);
-        // Store token and user data
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('user', JSON.stringify(response.user));
+        // Store token and user data (only in browser)
+        if (isPlatformBrowser(this.platformId)) {
+          localStorage.setItem('token', response.token);
+          localStorage.setItem('user', JSON.stringify(response.user));
+        }
         // Redirect to the return URL or dashboard
         this.router.navigate([this.returnUrl]);
       },
