@@ -1,4 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -15,6 +16,7 @@ export class Signup {
   private auth = inject(Auth);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
+  private platformId = inject(PLATFORM_ID);
 
   signupForm: FormGroup;
   isLoading = false;
@@ -70,9 +72,11 @@ export class Signup {
     this.auth.register(formData).subscribe({
       next: (response) => {
         console.log('Registration successful:', response);
-        // Store token and user data
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('user', JSON.stringify(response.user));
+        // Store token and user data (only in browser)
+        if (isPlatformBrowser(this.platformId)) {
+          localStorage.setItem('token', response.token);
+          localStorage.setItem('user', JSON.stringify(response.user));
+        }
         // Redirect to dashboard
         this.router.navigate(['/dashboard']);
       },
