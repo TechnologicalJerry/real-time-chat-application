@@ -62,8 +62,7 @@ const SessionSchema: Schema = new Schema(
         },
         expiresAt: {
             type: Date,
-            required: [true, 'Expiration date is required'],
-            index: true
+            required: [true, 'Expiration date is required']
         },
         lastActivity: {
             type: Date,
@@ -80,9 +79,8 @@ const SessionSchema: Schema = new Schema(
 // Indexes for better query performance
 SessionSchema.index({ userId: 1, isActive: 1 });
 SessionSchema.index({ token: 1, isActive: 1 });
-SessionSchema.index({ expiresAt: 1 });
 
-// Auto-delete expired sessions (TTL index)
+// Auto-delete expired sessions (TTL index - also creates expiresAt index)
 SessionSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
 
 // Pre-save middleware to update lastActivity
