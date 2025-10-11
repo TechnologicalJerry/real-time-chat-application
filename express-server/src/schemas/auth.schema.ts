@@ -46,8 +46,7 @@ const AuthTokenSchema: Schema = new Schema(
         },
         expiresAt: {
             type: Date,
-            required: [true, 'Expiration date is required'],
-            index: true
+            required: [true, 'Expiration date is required']
         }
     },
     {
@@ -59,9 +58,8 @@ const AuthTokenSchema: Schema = new Schema(
 // Indexes for better query performance
 AuthTokenSchema.index({ userId: 1, tokenType: 1 });
 AuthTokenSchema.index({ token: 1, isUsed: 1 });
-AuthTokenSchema.index({ expiresAt: 1 });
 
-// Auto-delete expired tokens (TTL index)
+// Auto-delete expired tokens (TTL index - also creates expiresAt index)
 AuthTokenSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
 
 // Virtual property to check if token is valid
