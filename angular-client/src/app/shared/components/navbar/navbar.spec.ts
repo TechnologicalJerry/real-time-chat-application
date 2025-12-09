@@ -14,7 +14,7 @@ describe('Navbar', () => {
 
     fixture = TestBed.createComponent(Navbar);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    await fixture.whenStable();
   });
 
   it('should create', () => {
