@@ -14,7 +14,7 @@ describe('ChatWindow', () => {
 
     fixture = TestBed.createComponent(ChatWindow);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    await fixture.whenStable();
   });
 
   it('should create', () => {

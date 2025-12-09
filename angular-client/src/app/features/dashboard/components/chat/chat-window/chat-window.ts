@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-chat-window',
   imports: [],
   templateUrl: './chat-window.html',
-  styleUrl: './chat-window.scss'
+  styleUrl: './chat-window.css',
 })
 export class ChatWindow {
 
