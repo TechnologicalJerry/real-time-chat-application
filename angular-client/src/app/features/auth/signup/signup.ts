@@ -9,7 +9,7 @@ import { Auth } from '../../../core/services/auth';
   selector: 'app-signup',
   imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './signup.html',
-  styleUrl: './signup.scss'
+  styleUrl: './signup.css'
 })
 export class Signup {
   private fb = inject(FormBuilder);
