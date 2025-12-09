@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-chat-list',
   imports: [],
   templateUrl: './chat-list.html',
-  styleUrl: './chat-list.scss'
+  styleUrl: './chat-list.css',
 })
 export class ChatList {
 
