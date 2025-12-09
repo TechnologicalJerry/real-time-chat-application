@@ -1,5 +1,5 @@
-import { CanActivateChildFn } from '@angular/router';
+import { CanActivateFn } from '@angular/router';
 
-export const adminGuard: CanActivateChildFn = (childRoute, state) => {
+export const adminGuard: CanActivateFn = (route, state) => {
   return true;
 };
