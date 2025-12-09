@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-toaster',
   imports: [],
   templateUrl: './toaster.html',
-  styleUrl: './toaster.scss'
+  styleUrl: './toaster.css',
 })
 export class Toaster {
 
