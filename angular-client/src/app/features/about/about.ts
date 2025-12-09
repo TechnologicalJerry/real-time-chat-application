@@ -7,7 +7,7 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './about.html',
-  styleUrl: './about.scss'
+  styleUrl: './about.css'
 })
 export class About {
 
