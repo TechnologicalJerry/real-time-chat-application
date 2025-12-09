@@ -1,82 +1,65 @@
-'use client';
+import Image from "next/image";
 
-import React from 'react';
-import Link from 'next/link';
-import { useAuth } from '@/lib/hooks/useAuth';
-import { ROUTES } from '@/lib/utils/constants';
-import styles from './page.module.css';
-
-export default function HomePage() {
-  const { isAuthenticated } = useAuth();
-
+export default function Home() {
   return (
-    <div className={styles.container}>
-      <section className={styles.hero}>
-        <div className={styles.heroContent}>
-          <h1 className={styles.title}>
-            Real-Time Chat Application
+    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+        <Image
+          className="dark:invert"
+          src="/next.svg"
+          alt="Next.js logo"
+          width={100}
+          height={20}
+          priority
+        />
+        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
+          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
+            To get started, edit the page.tsx file.
           </h1>
-          <p className={styles.subtitle}>
-            Connect with people instantly. Experience seamless communication with our modern, feature-rich chat platform.
+          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+            Looking for a starting point or more instructions? Head over to{" "}
+            <a
+              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+              className="font-medium text-zinc-950 dark:text-zinc-50"
+            >
+              Templates
+            </a>{" "}
+            or the{" "}
+            <a
+              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+              className="font-medium text-zinc-950 dark:text-zinc-50"
+            >
+              Learning
+            </a>{" "}
+            center.
           </p>
-          <div className={styles.actions}>
-            {isAuthenticated ? (
-              <Link href={ROUTES.DASHBOARD} className={styles.primaryBtn}>
-                Go to Dashboard
-              </Link>
-            ) : (
-              <>
-                <Link href={ROUTES.SIGNUP} className={styles.primaryBtn}>
-                  Get Started
-                </Link>
-                <Link href={ROUTES.LOGIN} className={styles.secondaryBtn}>
-                  Sign In
-                </Link>
-              </>
-            )}
-          </div>
         </div>
-      </section>
-
-      <section className={styles.features}>
-        <div className={styles.featuresGrid}>
-          <div className={styles.feature}>
-            <div className={styles.featureIcon}>💬</div>
-            <h3>Real-Time Messaging</h3>
-            <p>Send and receive messages instantly with WebSocket technology</p>
-          </div>
-
-          <div className={styles.feature}>
-            <div className={styles.featureIcon}>🔒</div>
-            <h3>Secure Authentication</h3>
-            <p>Your data is protected with industry-standard security practices</p>
-          </div>
-
-          <div className={styles.feature}>
-            <div className={styles.featureIcon}>👥</div>
-            <h3>User Management</h3>
-            <p>Manage users and conversations with an intuitive interface</p>
-          </div>
-
-          <div className={styles.feature}>
-            <div className={styles.featureIcon}>📱</div>
-            <h3>Responsive Design</h3>
-            <p>Works seamlessly across all devices and screen sizes</p>
-          </div>
-
-          <div className={styles.feature}>
-            <div className={styles.featureIcon}>⚡</div>
-            <h3>Fast & Reliable</h3>
-            <p>Built with modern technologies for optimal performance</p>
-          </div>
-
-          <div className={styles.feature}>
-            <div className={styles.featureIcon}>🎨</div>
-            <h3>Modern UI</h3>
-            <p>Beautiful and intuitive user interface for the best experience</p>
-          </div>
+        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+          <a
+            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
+            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              className="dark:invert"
+              src="/vercel.svg"
+              alt="Vercel logomark"
+              width={16}
+              height={16}
+            />
+            Deploy Now
+          </a>
+          <a
+            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
+            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Documentation
+          </a>
         </div>
-      </section>
+      </main>
     </div>
   );
 }
