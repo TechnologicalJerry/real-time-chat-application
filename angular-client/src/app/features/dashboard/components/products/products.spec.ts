@@ -14,7 +14,7 @@ describe('Products', () => {
 
     fixture = TestBed.createComponent(Products);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    await fixture.whenStable();
   });
 
   it('should create', () => {
