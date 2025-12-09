@@ -14,7 +14,7 @@ describe('NotFound', () => {
 
     fixture = TestBed.createComponent(NotFound);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    await fixture.whenStable();
   });
 
   it('should create', () => {
