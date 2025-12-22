@@ -1,0 +1,7 @@
+{
+  "name": "real-time-chat-application",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
